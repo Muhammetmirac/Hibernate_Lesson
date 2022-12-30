@@ -67,10 +67,27 @@ public class RunnerFetch01 { // fetch --> çekme, anlamındadır
 
  */
 //uniqueResult() with HQL ****************************************************************
-        String hqlQuery02 = "from Student01 where name = 'Yusuf'";
-        Student01 uniqueResqult02 =  session.createQuery(hqlQuery02,Student01.class).uniqueResult();
-        System.out.println(uniqueResqult02);
+//        String hqlQuery02 = "from Student01 where name = 'Yusuf'";
+//        Student01 uniqueResqult02 =  session.createQuery(hqlQuery02,Student01.class).uniqueResult();
+//        System.out.println(uniqueResqult02);
 
+//***************************************************************************************************
+        // yukarıdaki soruyu HQL Alias kullanarak yapalım
+//        String hqlQuery3= "from Student01 std where std.name='Yusuf'";                    // Student01 sonrası 'std' yazdıgımızda bundan sonra Student01 yazmamıza gerek kalmadan std ile kullanım gercekleştirirz SQL dersindeki alias(as) işlemi yani
+//        Student01 uniqueResult03 = session.createQuery(hqlQuery3,Student01.class).uniqueResult();                         //bu satır
+//        System.out.println(uniqueResult03);
+
+//**************************************************************************************************
+
+        //grade değeri 90 olanı alalım
+        String hqlQuery04 = "SELECT s.id,s.name FROM Student01 s WHERE s.grade=90";
+        List<Object[]> resultList04 = session.createQuery(hqlQuery04).getResultList();       // yukarıda bu satır olarak belirtilen satırda yazılan kod ile farkı class belirtmiyoru
+                                                                                        //Eğer böyle kullanacaksak Listimiz Object[] array olarak kullanırız
+        for (Object[] object: resultList04   ) {
+            System.out.println(Arrays.toString(object));
+        }
+        // createQuery metoduna tek parametre girdiğimiz için Student01 clası ile mappleme işlemi yapılmadı
+        // bu yüzden Object[] olarak aldık
 
 
         tx.commit();
@@ -80,3 +97,4 @@ public class RunnerFetch01 { // fetch --> çekme, anlamındadır
 
     }
 }
+//Mapleme=====>>> class objeleri ile databasede bulunan fieldleri eşleştirme işlemi

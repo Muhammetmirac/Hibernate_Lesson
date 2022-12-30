@@ -24,6 +24,11 @@ public class RunnerSave01 {
         student3.setGrade(95);
         student3.setName("Nazlı");
 
+        Student01 student4 = new Student01();
+        student4.setId(1004);
+        student4.setGrade(90);
+        student4.setName("Taha");
+
 
         Configuration con = new Configuration().
                 configure("hibernate.cfg.xml"). // cofg dosyam belirtildi
@@ -36,7 +41,8 @@ public class RunnerSave01 {
 
         //session.save(student1);
        // session.save(student2);
-        session.save(student3);
+        //session.save(student3);
+        session.save(student4);
 
         tx.commit(); // database gidecek kod satırlarımız için başlatmıs olduk. yoksa db ye komutlar gitmez
 
