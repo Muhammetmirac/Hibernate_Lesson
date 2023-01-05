@@ -15,6 +15,7 @@ private int grade;
 private LocalDateTime createOn; // oluşturulma tarihi öğrencini ünv kaydı tarihi
 
     @ManyToOne
+    //çoklu taraf hangi class sa "Many" ile başlayacağı yer orası olur
     @JoinColumn(name="university_id")
     private University university;
 

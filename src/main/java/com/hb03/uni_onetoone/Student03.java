@@ -13,6 +13,9 @@ public class Student03 {
     private String name;
     private int grade;
 
+
+    //getter-setter
+
     public int getId() {
         return id;
     }
@@ -37,6 +40,7 @@ public class Student03 {
         this.grade = grade;
     }
 
+    //toString
     @Override
     public String toString() {
         return "Student03{" +

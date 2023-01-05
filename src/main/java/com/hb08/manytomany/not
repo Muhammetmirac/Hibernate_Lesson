@@ -1,0 +1,9 @@
+
+
+--manytomany uygulamlarında 3.bir tablo ekleyerek her iki tablodan gelen idler tutulur
+--İlişki sahibi hangi  tabloysa ona "@JOİNTABLE" annotationı eklenir
+
+--Her ik classa da diğer classın datalarını barındıracak list oluşturulur ve bağlantı
+    bunların üzerinden @ManytoMany annotationu ile sağlanır
+
+--

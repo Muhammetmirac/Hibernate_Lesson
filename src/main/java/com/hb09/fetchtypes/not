@@ -1,0 +1,37 @@
+fetch types notlar
+--cascade yapıdan dolayı @OnetoMany ilişki kurulur
+
+        Book09                  Student09
+      @ManttoOne            @OnetoMany(mappedBy ="student", cascade =cascadeType.ALL, fetch=FetchType.EAGER)
+      @joinColumn           List<Book09> bookList;
+   Student09 student;
+
+   --karşılıklı ilişki söz konusudur
+   //burada yapı bu şekildedir
+   //
+
+--her iki taraftan da karşılıklı olarak setlenmesi gerekiyor
+
+--session.save işleminde sadece bir taraftan yapılırsa yeterli olur
+Yani ister book objelerini saveleyin istersenizde student objelerini saveleyin
+birbirine bağlı oldugu için diğerinin de tablosu oluşur
+
+
+/*
+    OneToMany       --> LAZY            ---> tembel anlamına gelir sorguda tüm bağlantıları getirmez
+    ManyToMany      --> LAZY
+    OneToOne        --> EAGER           ---> çalışkan anlamına gelir sorguda childlerdeki dataları da dahil getirir
+    ManyToOne       --> EAGER
+
+    default degerler yukarıdaki gibidir
+ */
+
+kod satırında bu şekilde gösterilir;
+
+    @OneToMany(mappedBy = "student" , cascade = CascadeType.ALL /*fetch = FetchType.EAGER*/)
+    private List<Book09> bookList = new ArrayList<>();
+
+    lazy ve eager arasındaki farkı anlamak için transaction başlatıp close edilmeden bir Student objesi oluşturursak
+    daha sonra bu objeyi for each dongsuyle tc.close() ve session.close() ettikten sonra çağırırsak
+            lazy de ----> exception atar
+            eager da ----> dataları getirir (RunnerFetch09 clasındaki son örnek bunu anlatıyor)

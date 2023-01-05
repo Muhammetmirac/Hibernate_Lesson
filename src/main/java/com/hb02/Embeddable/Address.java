@@ -3,7 +3,8 @@ package com.hb02.Embeddable;
 import javax.persistence.Embeddable;
 
 @Embeddable     //===>>>>>>>>  bu klassta oluşturmuş oldugummuz instanse variable leri embeded edilen klasın altında kullanabilmek için kullanıyoruz
-public class Address {
+                // BU CLASSTAN TABLO OLUŞMASIN ANCAK DATALARINI (VARİABLE) KULLANMAK İSTEDİĞİMİZ İÇİN "@EMBEDDABLE" ANNITATİONU KULLANIRIZ
+ public class Address {
     private String street;
     private String city;
     private String country;
